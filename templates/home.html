@@ -1,6 +1,7 @@
 <!--home.html-->
 {% extends "base.html" %}
 
+{% load custom_markdown %}
 {% block content %}
 <div class="posts">
     {% for post in post_list %}
@@ -10,6 +11,11 @@
 
                     <p class="post-meta">
                         Time:  <a class="post-author" href="#">{{ post.date_time }}</a> <a class="post-category post-category-js" href="#">{{ post.category }}</a>
+                        Category: <a class="post-category post-category-pure" href="{% url 'search_tag' tag=post.category %}">{{ post.category|title }}</a>&nbsp&nbsp
+                        Tag:
+                          {% for tag in post.tag.all %}
+                            <a class="post-category post-category-pure" href="#">{{ tag }}</a>
+                          {% endfor %}
                     </p>
             </header>
 
