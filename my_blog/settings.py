@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'article',
+    'bootstrap_admin',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -125,3 +126,9 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS=(
     os.path.join(BASE_DIR,'templates').replace('\\','/'),
 )
+
+from django.conf import global_settings
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+                                                                             'django.core.context_processors.request',
+                                                                             )
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
